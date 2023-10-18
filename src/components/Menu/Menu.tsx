@@ -10,14 +10,14 @@ type Props = {};
 enum Pages {
     info = "info",
     gallery = "gallery",
-    projects = "projects",
+    projects = "",
     profile = "profile",
 }
 
 const Menu = ({}: Props) => {
     const [currentPage, setCurrentPage] = useState<string>("");
     return (
-        <div className="z-10 font-normal  fixed left-0 right-0 m-auto bottom-[4%] stroke-white text-white text-[14px] w-[90%] max-w-[410px] h-20 bg-[#292929] rounded-[20px] flex justify-evenly items-center">
+        <div className="z-10 font-normal fixed left-0 right-0 m-auto bottom-[4%] stroke-white text-white text-[14px] w-[90%] max-w-[410px] h-20 bg-[#292929] rounded-[20px] flex justify-evenly items-center">
             <Link
                 onClick={() => setCurrentPage(Pages.info)}
                 className={`${
@@ -25,7 +25,7 @@ const Menu = ({}: Props) => {
                         ? "stroke-[#AC6DCA] text-[#AC6DCA] transition"
                         : ""
                 } flex flex-col gap-[4px] items-center`}
-                to="/info"
+                to={Pages.info}
             >
                 <Info className=" " />
                 <p>INFO </p>
@@ -37,7 +37,7 @@ const Menu = ({}: Props) => {
                         ? "stroke-[#AC6DCA] text-[#AC6DCA] transition"
                         : ""
                 } flex flex-col gap-[4px] items-center`}
-                to="/gallery"
+                to={Pages.gallery}
             >
                 <Gallery className=" " />
                 <p>GALLERY</p>
@@ -49,7 +49,7 @@ const Menu = ({}: Props) => {
                         ? "stroke-[#AC6DCA] text-[#AC6DCA] transition"
                         : ""
                 } flex flex-col gap-[4px] items-center`}
-                to="projects"
+                to={Pages.projects}
             >
                 <Projects className=" " />
                 <p>PROJECTS</p>
@@ -61,7 +61,7 @@ const Menu = ({}: Props) => {
                         ? "stroke-[#AC6DCA] text-[#AC6DCA] transition"
                         : ""
                 } flex flex-col gap-[4px] items-center`}
-                to="profile"
+                to={Pages.profile}
             >
                 <Profile className=" " />
                 <p>PROFILE</p>

@@ -2,41 +2,63 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { EffectCards } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/effect-cards";
-import practice from "../../assets/practice.png"
-import Edit from "../../assets/icons/edit.svg?react"
-import Link from "../../assets/icons/link.svg?react"
-type Props = {};
+import practice from "../../assets/practice.png";
+import Edit from "../../assets/icons/edit.svg?react";
+import Link from "../../assets/icons/link.svg?react";
+import { useState } from "react";
+interface Props {}
 
 const Projects = ({}: Props) => {
+    const [active, setActive] = useState(0);
+    // window.scrollTo({
+    //     top: 1,
+    // });
+    // window.addEventListener("scroll", (event) => {
+    //     if (window.scrollY < 1) {
+    //         window.scrollTo({
+    //             top: 1,
+    //         });
+    //     }
+    // });
     return (
-        <div className="h-screen grid grid-rows-6 items-center">
+        <div className="projects h-screen grid grid-rows-6 items-center">
             <h2 className=" header ">YOUR PROJECTS</h2>
             <Swiper
                 effect={"cards"}
                 grabCursor={true}
                 modules={[EffectCards]}
-                className="mySwiper row-start-2 row-end-5 max-w-[430px] w-[60vw] h-[100%] m-auto  "
+                className="mySwiper row-start-2 row-end-5 max-w-[306px] w-[70vw] h-[100%] m-auto  "
                 cardsEffect={{
                     rotate: false,
                     perSlideOffset: 10,
                 }}
+                onSlideChange={(e) => setActive(e.realIndex)}
             >
-                {[...new Array(3)].map((_,i)=>{
+                {[...new Array(3)].map((_, i) => {
                     return (
-                        <SwiperSlide className={`bg-gray-${3+i % 3}00 rounded-[20px] text-center  grid grid-rows-5 items-center justify-center`}>
-                            <h2 className="text-[20px] font-bold">PROJECT NAME</h2>
+                        <SwiperSlide
+                            style={{
+                                backgroundColor:
+                                    i === active
+                                        ? " rgb(209 213 219)"
+                                        : "rgb(107 114 128)",
+                            }}
+                            className={` transition rounded-[20px] text-center grid grid-rows-5 items-center justify-center`}
+                        >
+                            <h2 className="text-[20px] font-bold">
+                                PROJECT NAME
+                            </h2>
                             <div className=" row-start-2 row-end-5">
                                 <img src={practice} alt="" />
                             </div>
                             <div className="flex justify-between">
-                                <Edit stroke="black"/>
+                                <Edit stroke="black" />
                                 <p>Preview</p>
-                                <Link fill="black"/>
+                                <Link fill="black" />
                             </div>
                         </SwiperSlide>
-                    )
+                    );
                 })}
-
             </Swiper>
         </div>
     );
