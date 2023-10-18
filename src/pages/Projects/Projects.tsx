@@ -1,4 +1,3 @@
-import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { EffectCards } from "swiper/modules";
 import "swiper/css";
@@ -8,7 +7,7 @@ import Edit from "../../assets/icons/edit.svg?react"
 import Link from "../../assets/icons/link.svg?react"
 type Props = {};
 
-const Projects = (props: Props) => {
+const Projects = ({}: Props) => {
     return (
         <div className="h-screen grid grid-rows-6 items-center">
             <h2 className=" header ">YOUR PROJECTS</h2>
@@ -22,7 +21,7 @@ const Projects = (props: Props) => {
                     perSlideOffset: 10,
                 }}
             >
-                {[...new Array(3)].map((e,i)=>{
+                {[...new Array(3)].map((_,i)=>{
                     return (
                         <SwiperSlide className={`bg-gray-${3+i % 3}00 rounded-[20px] text-center  grid grid-rows-5 items-center justify-center`}>
                             <h2 className="text-[20px] font-bold">PROJECT NAME</h2>
