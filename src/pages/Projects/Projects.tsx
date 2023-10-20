@@ -6,7 +6,10 @@ import practice from "../../assets/practice.png";
 import Edit from "../../assets/icons/edit.svg?react";
 import Link from "../../assets/icons/link.svg?react";
 import { useState } from "react";
-interface Props {}
+
+
+interface Props { }
+
 
 const Projects = ({}: Props) => {
     const [active, setActive] = useState(0);
@@ -21,7 +24,7 @@ const Projects = ({}: Props) => {
     //     }
     // });
     return (
-        <div className="projects h-screen grid grid-rows-6 items-center">
+        <div className="projects grid grid-rows-6 items-center">
             <h2 className=" header ">YOUR PROJECTS</h2>
             <Swiper
                 effect={"cards"}
@@ -34,18 +37,18 @@ const Projects = ({}: Props) => {
                 }}
                 onSlideChange={(e) => setActive(e.realIndex)}
             >
-                {[...new Array(3)].map((_, i) => {
+                {[...new Array(5)].map((_, i) => {
                     return (
                         <SwiperSlide
                             style={{
                                 backgroundColor:
                                     i === active
-                                        ? " rgb(209 213 219)"
+                                        ? " rgb(255 255 255)"
                                         : "rgb(107 114 128)",
                             }}
                             className={` transition rounded-[20px] text-center grid grid-rows-5 items-center justify-center`}
                         >
-                            <h2 className="text-[20px] font-bold">
+                            <h2 className="text-[practice20px] font-bold">
                                 PROJECT NAME
                             </h2>
                             <div className=" row-start-2 row-end-5">
@@ -60,6 +63,7 @@ const Projects = ({}: Props) => {
                     );
                 })}
             </Swiper>
+            <div className="w-10 h-10 "></div>
         </div>
     );
 };

@@ -4,6 +4,7 @@ import Info from "../../assets/icons/info.svg?react";
 import Gallery from "../../assets/icons/gallery.svg?react";
 import Projects from "../../assets/icons/projects.svg?react";
 import Profile from "../../assets/icons/profile.svg?react";
+// import pup from '../../assets/pup.svg'
 
 type Props = {};
 
@@ -17,7 +18,7 @@ enum Pages {
 const Menu = ({}: Props) => {
     const [currentPage, setCurrentPage] = useState<string>("");
     return (
-        <div className="z-10 font-normal fixed left-0 right-0 m-auto bottom-[4%] stroke-white text-white text-[14px] w-[90%] max-w-[410px] h-20 bg-[#292929] rounded-[20px] flex justify-evenly items-center">
+        <div className=" z-10 font-normal fixed left-0 right-0 m-auto bottom-[4%] stroke-white text-white text-[14px] w-[90%] max-w-[410px] h-20 bg-[#292929] rounded-[20px] flex justify-evenly items-center">
             <Link
                 onClick={() => setCurrentPage(Pages.info)}
                 className={`${
@@ -66,6 +67,11 @@ const Menu = ({}: Props) => {
                 <Profile className=" " />
                 <p>PROFILE</p>
             </Link>
+            {/* <img
+                src={pup}
+                alt=""
+                className="absolute -z-[1] -top-0 hover:-top-1/2 transition-all duration-200"
+            /> */}
         </div>
     );
 };

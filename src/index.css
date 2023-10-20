@@ -8,9 +8,6 @@
 html {
     height: calc(100vh * 2);
 }
-body {
-    overflow: hidden;
-}
 .header{
     color:#FFF;
     font-size: 24px;
@@ -19,7 +16,7 @@ body {
     line-height: normal;
     text-align: center;
 }
-.gallery, .projects {
+.gallery, .projects, .edit {
     background: var(--gradient, linear-gradient(180deg, #7942D1 0%, #E74EEA 100%));
     position: fixed;
     height: 100vh;
