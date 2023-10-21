@@ -26,20 +26,22 @@ const Gallery = (_props: Props) => {
     // }
 
     return (
-        <div className="gallery max-w-[410px] relative m-auto flex flex-col justify-center items-center h-fit ">
-            {[...new Array(5)].map(()=>{
-                return(
-                     <img
-                draggable={false}
-                className=" w-1/2"
-                src={tiktok}
-                alt=""
-            />
-                )
+        <div className="gallery max-w-[410px] m-auto h-fit snap-y snap-mandatory overflow-scroll">
+            {[...new Array(2)].map((_, i) => {
+                return (
+                    <div className="h-screen snap-center">
+                        <img
+                            draggable={false}
+                            className={`h-[320px] relative top-[200px] `}
+                            style={{
+                                // transform:`translateY(-${300}px)`
+                            }}
+                            src={tiktok}
+                            alt=""
+                        />
+                    </div>
+                );
             })}
-           
-
-
 
             {/* <img
                 // onTouchMove={(e) => swipe(e)}
