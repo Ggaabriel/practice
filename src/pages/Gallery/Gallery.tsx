@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import tiktok from "../../assets/tiktok.png";
 
 interface Props {}
@@ -24,43 +24,58 @@ const Gallery = (_props: Props) => {
 
     //     event.target.style.transform = "translateY(" + y + "px) ";
     // }
+    const [active, setActive] = useState(0);
+  const scrollContainerRef = useRef(null);
 
-    return (
-        <div className="gallery max-w-[410px] m-auto h-fit snap-y snap-mandatory overflow-scroll">
-            {[...new Array(2)].map((_, i) => {
-                return (
-                    <div className="h-screen snap-center">
-                        <img
-                            draggable={false}
-                            className={`h-[320px] relative top-[200px] `}
-                            style={{
-                                // transform:`translateY(-${300}px)`
-                            }}
-                            src={tiktok}
-                            alt=""
-                        />
-                    </div>
-                );
-            })}
+  const handleScroll = () => {
+    const container = scrollContainerRef.current;
+    if (container) {
+      const scrollTop = container.scrollTop;
+      const scrollHeight = container.scrollHeight;
+      const clientHeight = container.clientHeight;
+      const numberOfBlocks = 15;
+      const blockHeight = scrollHeight / numberOfBlocks;
 
-            {/* <img
-                // onTouchMove={(e) => swipe(e)}
-                // onTouchStart={(e: any) =>
-                //     setTouch(
-                //         e.touches[0].clientY -
-                //             e.target.getBoundingClientRect().top -
-                //             e.target.getBoundingClientRect().height / 2
-                //     )
-                // }
-                // onMouseUp={(e) => addSwipe(e)}
-                // onTouchEnd={(e)=>removeSwipe(e)}
-                draggable={false}
-                className=" w-1/2   absolute select-none"
-                src={tiktok}
-                alt=""
-            /> */}
-        </div>
-    );
+      const currentBlock = Math.floor(scrollTop / blockHeight);
+
+      setActive(currentBlock);
+    }
+  };
+
+  useEffect(() => {
+    const container = scrollContainerRef.current;
+    if (container) {
+      container.addEventListener('scroll', handleScroll);
+    }
+
+    return () => {
+      if (container) {
+        container.removeEventListener('scroll', handleScroll);
+      }
+    };
+  }, []);
+
+  return (
+    <div
+      ref={scrollContainerRef}
+      className="gallery max-w-[410px] m-auto h-fit snap-y snap-mandatory overflow-scroll"
+    >
+      {[...new Array(15)].map((_, i) => {
+        return (
+          <div key={i} className="h-screen snap-start">
+            <img
+              draggable={false}
+              className={`h-[320px] transition ${
+                i === active ? 'relative z-20 top-[200px] scale-100' : 'fixed z-10 top-[230px] scale-90'
+              }`}
+              src={tiktok}
+              alt=""
+            />
+          </div>
+        );
+      })}
+    </div>
+  );
 };
 
 export default Gallery;
