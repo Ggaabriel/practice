@@ -5,9 +5,9 @@
 * {
     font-family: 'Montserrat', sans-serif;
 }
-/* html {
+html {
     height: calc(100vh * 2);
-} */
+}
 .header{
     color:#FFF;
     font-size: 24px;
