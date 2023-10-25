@@ -24,3 +24,18 @@ html {
     left: 0;
     top: 0;
 }
+.bob{
+    animation: born 100ms linear;
+}
+
+@keyframes born {
+    0%{
+        transform: scale(1.0);
+        top: 19vh;
+    }
+    100%{
+        transform: scale(1.1);
+        top: 15vh;
+    }
+}
+
